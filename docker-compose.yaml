@@ -1,0 +1,65 @@
+version: '3'
+services:
+  rabbitmq:
+    image: rabbitmq
+    container_name: rabbitmq
+    ports: 
+      - "5672:5672"
+      - "15672:15672" 
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
+    restart: always # fixes MongoNetworkError when mongodb is not ready when mongo-express starts 
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+  nginx:
+    build: './etc/nginx'
+    container_name: nginx
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
+  user-service:
+    build: './user_service'
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - mongo
+      - rabbitmq
+      - nginx
+  email-service:
+    build: './email_service'
+    ports: 
+      - "4000:4000"
+    restart: always
+    depends_on:
+      - rabbitmq
+      - nginx
+  content-service:
+    build: './content_service'
+    ports: 
+      - "5000:5000"
+    depends_on:
+      - mongo
+      - nginx
+  interaction-service:
+    build: './user_interaction_service'
+    ports: 
+      - "6000:6000"
+    depends_on:
+      - mongo
+      - nginx
+
+volumes:
+  mongodata:
+    driver: local
