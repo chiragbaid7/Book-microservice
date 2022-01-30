@@ -1,0 +1,12 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+# production
+
+# misc
+.DS_Store
+.env.local
