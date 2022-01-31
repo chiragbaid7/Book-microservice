@@ -17,7 +17,7 @@ Run the docker compose yaml file.
  - Used RabbitMQ as a Message Broker to push message from User Service to Email Service after which an email 
    is sent to the new regsitered user.
  - User can filter books based on the likes or reads interactions.
- - Used Mongodb database for each microservice.
+ - Used Mongodb database for all three microservices with same database instance.
 
 
 ## System Architecture
@@ -97,6 +97,8 @@ This diagram illustrates how this project's backend works.
      update password            PATCH    http:://api/v1/users/updatepassword
 
      update name                PATCH    http:://api/v1/users/updatename
+     
+     delete user                DELETE   http:://api/v1/users
 
 - Request
  ```
@@ -106,7 +108,7 @@ This diagram illustrates how this project's backend works.
  ```
  
 - Response Body: 201
-  ```json
+ ```json
   {
    "result": {
        "name": "Chirag",
@@ -116,14 +118,79 @@ This diagram illustrates how this project's backend works.
         "_id": "61f77e267aceb6f9e51c25b3",
       }        
   }
-  ```
+ ```
 
  ## Email Service
-![Screenshot from 2022-01-31 11-44-00](https://user-images.githubusercontent.com/37933427/151751274-c8b64697-e854-4dca-b01d-9bf5d49c75b4.png)
+ - Email service sends greeting mail to the newly registered users.
+ - It consumes events from Message queue published by User service after new registration.
+ - Email is sent using node mailer.
  
-![email-test](https://user-images.githubusercontent.com/37933427/151751325-326f1324-453d-46f3-a970-5d22fce317e9.png)
+ ![Screenshot from 2022-01-31 12-50-05](https://user-images.githubusercontent.com/37933427/151839195-e0dd6da6-c3e7-465d-8c53-43e566b362b9.png)
 
-![anatomy](https://user-images.githubusercontent.com/37933427/151753921-3241d98d-fdb3-46f2-b883-6cc953fcf45c.png)
+ 
+## Content Service
+- Serving books as content. A content will have a story and title as contents.
+- Content service should have atleast the title, story, date published and the user id stored.
 
- 
- 
+### Rest Apis
+
+     post new content             POST    http:://api/v1/contents/
+
+     get newly added contents     GET     http:://api/v1/users/new
+
+     get top liked contents       GET     http:://api/v1/contents/top/liked
+
+     get top read contents        GET     http:://api/v1/contents/top/read
+
+     get content by id            GET     http:://api/v1/contents/:id
+     
+     update story                 PATCH   http:://api/v1/contents/:id/update-story
+     
+     update title                 PATCH   http:://api/v1/contents/:id/update-title
+     
+     delete content               DELETE  http:://api/v1/contents/:id
+     
+ - Request     
+  ```
+  curl -H "Authorization: Bearer <Token>" localhost:80/api/v1/contents/new \
+  --header 'Content-Type: application/json'
+  ```   
+ - Response
+  ```json
+  "result": 
+  {
+    [
+      {
+         "_id": "61f82deddaa122263e6f0c22",
+         "title": "Interstellar",
+         "story": "No Time for caution",
+         "user_id": "61f82b9d2dfca828d5238e2c",
+         "createdAt": "2022-01-31T18:43:57.980Z",
+      },
+      {
+         "_id": "61f82ba9daa122263e6f0c1d",
+         "title": "HEllo world",
+         "story": "Random story",
+         "user_id": "61f82b9d2dfca828d5238e2c",
+         "createdAt": "2022-01-31T18:34:17.596Z"
+      },
+      {
+         "_id": "61f82ba8daa122263e6f0c1b",
+         "title": "Toy story",
+         "story": "To infity and beyond",
+         "user_id": "61f82b9d2dfca828d5238e2c",
+         "createdAt": "2022-01-31T18:34:16.177Z"
+      }
+    ]
+  }
+  ```
+ ## User interaction service
+ - User Interaction service is basically supposed record events done by the user. In this case the service records 2 types of
+   events, Like and Read.
+ - Like - The content liked by the current user.
+ - Read - The content i.e book completely read by the user.
+ - This service exposes API for content service inorder to fetch top contents bases on likes and read since these 2 events data is 
+   stored in User_events database.
+     
+     
+     
