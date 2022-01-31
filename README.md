@@ -11,7 +11,7 @@ Run the docker compose yaml file.
 # System Design
 
 ## Features
- - Books 
+ - Build scabale backend system to serve books as contents.
  - Dockerized entire application including all microservices and databases for easy deployement.
  - Used Nginx as a reverse proxy to cater requests to different services.
  - Used RabbitMQ as a Message Broker to push message from User Service to Email Service after which an email 
