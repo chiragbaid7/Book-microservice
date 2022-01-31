@@ -15,7 +15,7 @@ exports.verifyToken = async(req,res,next) =>{
       const jwtToken = req.headers.authorization.split(" ")[1];
       const {user_id} = await jwt.verify(jwtToken, development.privateKey)
       if(user_id===null){
-        throw new Unauthorized(description="Unauthorized");
+        throw new Error;
       }
       req.user_id = user_id;
       next();
