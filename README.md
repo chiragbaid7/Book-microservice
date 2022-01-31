@@ -85,6 +85,7 @@ This diagram illustrates how this project's backend works.
 
 - User service deals with user registration and login.
 - Jwt tokens is used to authorize the incoming user's request in all the services.
+- A user will be able to create, update and delete contents.
 
 ### Rest Apis
 
@@ -152,7 +153,7 @@ This diagram illustrates how this project's backend works.
      
  - Request     
   ```
-  curl -H "Authorization: Bearer <Token>" localhost:80/api/v1/contents/new \
+  curl -H "Authorization: Bearer <Token>" http://localhost:80/api/v1/contents/new \
   --header 'Content-Type: application/json'
   ```   
  - Response
@@ -192,5 +193,26 @@ This diagram illustrates how this project's backend works.
  - This service exposes API for content service inorder to fetch top contents bases on likes and read since these 2 events data is 
    stored in User_events database.
      
+### Rest Apis
+   
+     Like a content                          PUT    http:://api/v1/interact/like
+
+     Comepleted reading a content            PUT    http:://api/v1/interact/read
+
+     get like interaction on given content   GET    http:://api/v1/interact/:content_id/likes
      
+     get read interaction on given content   GET    http:://api/v1/interact/:content_id/read
+
+   
+- Request 
+ ```
+  curl -X PUT -H "Authorization: Bearer <Token>" http://localhost:80/api/v1/interact/like?content_id=61f82ba9daa122263e6f0c1d \
+  --header 'Content-Type: application/json'
+ ```
      
+- Response
+ ```json
+ {
+    "success": true
+ }
+ ```
