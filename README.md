@@ -22,7 +22,7 @@ Run the docker compose yaml file.
 
 ## System Architecture
 
-![system_design_template](https://user-images.githubusercontent.com/37933427/151711567-6c558721-a3af-48ec-b01d-bd6e80247171.jpg)
+![system_design_template drawio](https://user-images.githubusercontent.com/37933427/151859096-f6fb5873-5e0d-4991-8ecd-a3dd0882a830.png)
 
 This diagram illustrates how this project's backend works.
 
@@ -85,7 +85,6 @@ This diagram illustrates how this project's backend works.
 
 - User service deals with user registration and login.
 - Jwt tokens is used to authorize the incoming user's request in all the services.
-- A user will be able to create, update and delete contents.
 
 ### Rest Apis
 
@@ -132,6 +131,7 @@ This diagram illustrates how this project's backend works.
 ## Content Service
 - Serving books as content. A content will have a story and title as contents.
 - Content service should have atleast the title, story, date published and the user id stored.
+- A user will be able to create, update and delete contents.
 
 ### Rest Apis
 
