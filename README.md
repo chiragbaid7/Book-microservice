@@ -4,20 +4,19 @@ This project aims to implement 4 microservices pertaining to serving books as co
 
 
 # Instructions
-Run the docker compose yaml file.
-
+Run the docker compose yaml file to start.
 `docker-compose -f docker-compose.yaml up`
 
 # System Design
 
 ## Features
- - Build scabale backend system to serve books as contents.
+ - Built scabale backend system to serve books as contents.
  - Dockerized entire application including all microservices and databases for easy deployement.
  - Used Nginx as a reverse proxy to cater requests to different services.
- - Used RabbitMQ as a Message Broker to push message from User Service to Email Service after which an email 
-   is sent to the new regsitered user.
+ - Used RabbitMQ as the Message Broker to publish message from User Service to Email Service after which an email 
+   will be sent to the newly regsitered user.
  - User can filter books based on the likes or reads interactions.
- - Used Mongodb database for all three microservices with same database instance.
+ - Used Mongodb database for all three microservices.
 
 
 ## System Architecture
