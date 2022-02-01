@@ -28,6 +28,7 @@ This diagram illustrates how this project's backend works.
 
 
 ![screenshot](https://user-images.githubusercontent.com/37933427/151713856-fc274162-817f-42f8-b6ec-1eb00b973caf.png)
+
 <details>
     <summary>Diagram Code</summary>
     
@@ -125,7 +126,7 @@ This diagram illustrates how this project's backend works.
  - It consumes events from Message queue published by User service after new registration.
  - Email is sent using node mailer.
  
- ![Screenshot from 2022-01-31 12-50-05](https://user-images.githubusercontent.com/37933427/151839195-e0dd6da6-c3e7-465d-8c53-43e566b362b9.png)
+![email-test](https://user-images.githubusercontent.com/37933427/151967197-0f1b1b5c-cf70-4496-96ae-8c440b4426ab.png)
 
  
 ## Content Service
