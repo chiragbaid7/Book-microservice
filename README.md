@@ -11,7 +11,7 @@ This project aims to implement 4 microservices pertaining to serving books as co
 # System Design
 
 ## Features
- - Built a scabale backend system to serve books as contents.
+ - Built a scalable backend system to serve books as contents.
  - Dockerized entire application including all services and databases for easy deployement.
  - Used Nginx as a reverse proxy to cater requests to different services.
  - Used RabbitMQ as the Message-Broker to publish message from User Service to Email Service after which an email 
