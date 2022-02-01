@@ -16,7 +16,7 @@ Run the docker compose yaml file to start.
  - Used RabbitMQ as the Message-Broker to publish message from User Service to Email Service after which an email 
    will be sent to the newly regsitered user.
  - User can filter books based on the likes or reads interactions.
- - Used Mongodb database for all three microservices.
+ - Implemented database using Mongodb for all three microservices.
 
 
 ## System Architecture
