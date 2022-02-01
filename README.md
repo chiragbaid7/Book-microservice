@@ -4,7 +4,8 @@ This project aims to implement 4 microservices pertaining to serving books as co
 
 
 # Instructions
-Run the docker compose yaml file to start.
+ Run the docker compose yaml file to start.
+
 `docker-compose -f docker-compose.yaml up`
 
 # System Design
