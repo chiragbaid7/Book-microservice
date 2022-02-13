@@ -22,7 +22,7 @@ This project aims to implement 4 microservices pertaining to serving books as co
 
 ## System Architecture
 
-![system_design_template drawio](https://user-images.githubusercontent.com/37933427/151859096-f6fb5873-5e0d-4991-8ecd-a3dd0882a830.png)
+![new_system_design_template drawio](https://user-images.githubusercontent.com/37933427/153756157-34581434-bb5a-470e-ad82-9b0f2511425c.png)
 
 This diagram illustrates how this project's backend works.
 
