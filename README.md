@@ -187,11 +187,11 @@ This diagram illustrates how this project's backend works.
   }
   ```
  ## User interaction service
- - User Interaction service is basically supposed record events done by the user. In this case the service records 2 types of
-   events, Like and Read.
+ - User Interaction service is basically to record events done by the user. In this case the service records 2 types of
+   events - Like and Read.
  - Like - The content liked by the current user.
  - Read - The content i.e book completely read by the user.
- - This service exposes API for content service inorder to fetch top contents bases on likes and read since these 2 events data is 
+ - This service exposes API for content service inorder to fetch top contents based on likes and reads count since these 2 events data is 
    stored in User_events database.
      
 ### Rest Apis
