@@ -126,7 +126,6 @@ This diagram illustrates how this project's backend works.
  - It consumes events from Message queue published by User service after new registration.
  - Email is sent using node mailer.
  
-![email-test](https://user-images.githubusercontent.com/37933427/151967197-0f1b1b5c-cf70-4496-96ae-8c440b4426ab.png)
 
  
 ## Content Service
